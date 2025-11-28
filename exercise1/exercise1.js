@@ -2,17 +2,9 @@
 
 //Llamando a la funcion
 
-heladeria();
-
-
-
-
-//Una funcion para poder mandar al usuario al menu cuando elija esa opcion.
-
-function heladeria (){
 
 //Se usa mas tarde para preguntar si se desea realizar otra compra.
-let pregunta;
+let repetirMenu = true;
 
 
 //Se usa un do while para ejecutar el codigo antes de confirmar la condicion.
@@ -38,14 +30,20 @@ let vuelto = 0;
 let money = parseFloat(prompt("Introduce la cantidad de dinero que tienes: "));
 
 
+//Opcion 1
+
 if(money >= 2.9){
 
 //Se le pide al usuario que seleccione una de las opciones.
 
-let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: \n1. ${iceCreams[5]} \n2. ${iceCreams[6]} \n3. Volver al menu \n0. Salir`));
+let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: 
+    \n1. ${iceCreams[5]}
+    \n2. ${iceCreams[6]} 
+    \n3. Volver al menu 
+    \n0. Salir`));
 
 
-if(eleccion == 1 || eleccion == 2){ 
+if(eleccion === 1 || eleccion === 2){ 
 
     montoTotal += 2.9;
     vuelto =  money - montoTotal;
@@ -55,13 +53,13 @@ if(eleccion == 1 || eleccion == 2){
 
 }
 
-else if (eleccion == 3){
+else if (eleccion === 3){
 
-  heladeria();
+  continue; // reinicia el menu
 
 }
 
-else if (eleccion == 0){
+else if (eleccion === 0){
 
 
     alert("Bye");
@@ -69,19 +67,23 @@ else if (eleccion == 0){
 }
 
 
-}
+} //fin del if
 
-
+//Opcion 2
 
 
 else if (money >= 1.8 && money < 2.9){
 
 
 //Se le pide al usuario que seleccione una de las opciones.
-let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: \n1. ${iceCreams[2]} \n2. ${iceCreams[3]} \n3. ${iceCreams[4]} \n4. Volver al menu \n0. Salir`));
+let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: 
+    \n1. ${iceCreams[2]} 
+    \n2. ${iceCreams[3]} 
+    \n3. ${iceCreams[4]} 
+    \n4. Volver al menu \n0. Salir`));
 
 
-if(eleccion == 1){ 
+if(eleccion === 1){ 
 
     montoTotal += 1.6;
     vuelto =  money - montoTotal;
@@ -91,7 +93,7 @@ if(eleccion == 1){
 
 }
 
-else if (eleccion == 2){
+else if (eleccion === 2){
 
     montoTotal += 1.7;
     vuelto =  money - montoTotal;
@@ -102,7 +104,7 @@ else if (eleccion == 2){
 
 }
 
-else if (eleccion == 3){
+else if (eleccion === 3){
 
 
       montoTotal += 1.8;
@@ -113,14 +115,15 @@ else if (eleccion == 3){
 
 }
 
-else if (eleccion == 4){
+else if (eleccion === 4){
 
-    heladeria();
+     continue; // reinicia el menu
+
 
 
 }
 
-else if (eleccion == 0){
+else if (eleccion === 0){
 
 alert("Bye");
 
@@ -128,15 +131,18 @@ alert("Bye");
 
 
 
-}
+} // fin del else if
 
 else if (money >= 1 && money < 1.8){
 
 //Se le pide al usuario que seleccione una de las opciones.
-let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: \n1. ${iceCreams[0]} \n2. ${iceCreams[1]} \n3. Volver al menu \n0. Salir`));
+let eleccion = parseInt(prompt(`Seleccione el helado que desea comprar: 
+    \n1. ${iceCreams[0]} 
+    \n2. ${iceCreams[1]} 
+    \n3. Volver al menu \n0. Salir`));
 
 
-if(eleccion == 1){ 
+if(eleccion === 1){ 
 
     montoTotal += 0.6;
     vuelto =  money - montoTotal;
@@ -146,7 +152,7 @@ if(eleccion == 1){
 
 }
 
-else if (eleccion == 2){
+else if (eleccion === 2){
 
     montoTotal += 1;
     vuelto =  money - montoTotal;
@@ -157,29 +163,30 @@ else if (eleccion == 2){
 
 }
 
-else if (eleccion == 3){
+else if (eleccion === 3){
 
-      heladeria();
+     continue; // reinicia el menu
 
 }
 
 
-else if (eleccion == 0){
+else if (eleccion === 0){
 
 alert("Bye");
 
 }
 
 
+} // Fin del else if
+
+
+//Comprar de nuevo
+
+const again = prompt("Desea comprar de nuevo? y/n");
+if(again !== "y") repetirMenu = false;
+
 }
 
-
-pregunta = prompt("Desea comprar de nuevo? y/n");
-
-}
-
-while(pregunta == "y");
+while(repetirMenu);
 
 alert("Bye");
-
-}
